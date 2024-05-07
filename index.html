@@ -9,8 +9,21 @@
   <body>
     <div class="main-container">
       <div class="btns">
-        <button onclick="setStage()" class="btn" role="button">Setup the Canvas.</button>
-        <button onclick="cleared()" class="btn" role="button">Clear the Canvas.</button>
+        <form id="gridSizeForm" onsubmit="setStage(event)">
+          <input
+            type="text"
+            id="gridSize"
+            name="gridSize"
+            pattern="[1-9][0-9]*"
+            min="1"
+            max="100"
+            placeholder="Canvas Pixel(1 to 100)"
+            title="Please enter a number between 1 and 100."
+          />
+
+          <button type="submit" class="btn">Setup the Canvas</button>
+        </form>
+        <button onclick="cleared()" class="btn" role="button">Clear the Canvas</button>
       </div>
       <div class="container"></div>
     </div>

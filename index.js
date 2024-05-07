@@ -6,23 +6,24 @@ function clearContainer() {
   }
 }
 
-function setStage() {
+function setStage(event) {
+  event.preventDefault();
   clearContainer();
 
-  let gridSize = prompt("How many pixels per side?(MAX: 100)");
-  let gridChecked = Math.min(parseInt(gridSize), 100);
-  console.log(gridChecked);
+  let gridSizeInput = document.getElementById("gridSize");
+  let gridSize = parseInt(gridSizeInput.value);
+  let gridRanged = Math.min(gridSize, 100);
 
   const container = document.querySelector(".container");
   const gridContainer = document.createElement("div");
   gridContainer.classList.add("grid-container");
-  const boxWidth = container.offsetWidth / gridChecked;
+  const boxWidth = container.offsetWidth / gridRanged;
 
-  for (i = 0; i < gridChecked; i++) {
+  for (i = 0; i < gridRanged; i++) {
     const outerDiv = document.createElement("div");
     outerDiv.classList.add("grid-row");
 
-    for (j = 0; j < gridChecked; j++) {
+    for (j = 0; j < gridRanged; j++) {
       const div = document.createElement("div");
       div.classList.add("grid-item");
       div.style.width = boxWidth + "px";
