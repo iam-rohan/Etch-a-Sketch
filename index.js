@@ -9,18 +9,18 @@ function clearContainer() {
 function setStage() {
   clearContainer();
 
-  let gridSize = prompt("How many pixels per side?");
+  let gridSize = prompt("How many pixels per side?(MAX: 100)");
   let gridChecked = Math.min(parseInt(gridSize), 100);
   console.log(gridChecked);
 
-  const mainContainer = document.querySelector(".container");
+  const container = document.querySelector(".container");
   const gridContainer = document.createElement("div");
   gridContainer.classList.add("grid-container");
-  mainContainer.style.width = "600px";
-  const boxWidth = mainContainer.offsetWidth / gridChecked;
+  const boxWidth = container.offsetWidth / gridChecked;
 
   for (i = 0; i < gridChecked; i++) {
     const outerDiv = document.createElement("div");
+    outerDiv.classList.add("grid-row");
 
     for (j = 0; j < gridChecked; j++) {
       const div = document.createElement("div");
@@ -29,7 +29,7 @@ function setStage() {
       div.style.height = boxWidth + "px";
       outerDiv.appendChild(div);
     }
-    outerDiv.classList.add("grid-row");
+
     divMaker.appendChild(outerDiv);
   }
   const gridItems = document.querySelectorAll(".grid-item");
